@@ -1,11 +1,15 @@
 const mongoose = require("mongoose");
 
-const { MONGO_URI } = process.env;
+const MONGO_URI = process.env.MONGO_URI;
+const MONGO_USER = process.env.MONGO_USER;
+const MONGO_PASS = process.env.MONGO_PASS;
 
 exports.connect = () => {
   // Connecting to the database
   mongoose
     .connect(MONGO_URI, {
+      user: MONGO_USER,
+      pass: MONGO_PASS,
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
